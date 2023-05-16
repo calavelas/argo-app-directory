@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-off-app-sit
+  labels:
+    project: app-off-app-sit
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/calavelas/argo-app-directory
+    targetRevision: main
+    path: overlays/sit
+    directory:
+      recurse: true
+  destination:
+    name: in-cluster
+    namespace: hello-there
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
