@@ -1,9 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: hello-there3
+  name: hello-there4
   labels:
-    project: hello-there3
+    project: hello-there4
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
